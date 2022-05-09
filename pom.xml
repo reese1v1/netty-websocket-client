@@ -8,14 +8,17 @@
         <version>2.6.7</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+
     <groupId>com.inspur.nlu</groupId>
     <artifactId>netty-client-demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>netty-client-demo</name>
     <description>netty-client-demo</description>
+
     <properties>
         <java.version>1.8</java.version>
     </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -38,6 +41,12 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+        </dependency>
+
 
     </dependencies>
 

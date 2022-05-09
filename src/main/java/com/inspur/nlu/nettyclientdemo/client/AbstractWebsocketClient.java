@@ -2,7 +2,9 @@ package com.inspur.nlu.nettyclientdemo.client;
 
 import com.inspur.nlu.nettyclientdemo.Exception.MyException;
 import com.inspur.nlu.nettyclientdemo.entity.WebsocketContext;
+import io.netty.buffer.ByteBuf;
 import io.netty.channel.Channel;
+import io.netty.handler.codec.http.websocketx.BinaryWebSocketFrame;
 import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -45,6 +47,21 @@ public abstract class AbstractWebsocketClient implements Closeable {
         Channel channel = getChannel();
         if (channel != null) {
             channel.writeAndFlush(new TextWebSocketFrame(message));
+            return;
+        }
+        throw new MyException("连接已经关闭");
+    }
+
+    /**
+     * 发送ByteBuf
+     *
+     * @param message
+     * @throws MyException
+     */
+    public void write(ByteBuf message) throws MyException {
+        Channel channel = getChannel();
+        if (channel != null) {
+            channel.writeAndFlush(new BinaryWebSocketFrame(message));
             return;
         }
         throw new MyException("连接已经关闭");
